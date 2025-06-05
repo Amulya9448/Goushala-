@@ -1,0 +1,65 @@
+labours = []
+volunteers = []
+
+def add_labour():
+    global labours
+    name = input("Enter labour name: ")
+    shift = input("Enter shift (Morning/Afternoon/Night): ")
+    contact = input("Enter contact number: ")
+    status = input("Enter current work status: ")
+    labours.append({"name": name, "shift": shift, "contact": contact, "status": status})
+    print("Labour added successfully.\n")
+
+def view_labours():
+    print("\n--- Labour Schedule ---")
+    for l in labours:
+        print(f"Name: {l['name']}, Shift: {l['shift']}, Contact: {l['contact']}, Status: {l['status']}")
+    print()
+
+def register_volunteer():
+    global volunteers
+    name = input("Enter volunteer/NGO name: ")
+    time = input("Preferred time slot: ")
+    contact = input("Contact number: ")
+    volunteers.append({"name": name, "time": time, "contact": contact})
+    print("Volunteer registered successfully.\n")
+
+def view_volunteers():
+    print("\n--- Volunteers ---")
+    for v in volunteers:
+        print(f"Name: {v['name']}, Time: {v['time']}, Contact: {v['contact']}")
+    print()
+
+def admin_panel():
+    print("\n--- Admin Panel ---")
+    print(f"Total Labours: {len(labours)}")
+    print(f"Total Volunteers: {len(volunteers)}")
+    print("Reports generated.\n")
+
+while True:
+    print("""
+    Gaushala Labour Management
+    1. Add Labour
+    2. View Labours
+    3. Register Volunteer
+    4. View Volunteers
+    5. Admin Panel
+    6. Exit
+    """)
+    choice = input("Choose an option: ")
+
+    if choice == "1":
+        add_labour()
+    elif choice == "2":
+        view_labours()
+    elif choice == "3":
+        register_volunteer()
+    elif choice == "4":
+        view_volunteers()
+    elif choice == "5":
+        admin_panel()
+    elif choice == "6":
+        print("Exiting... Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please try again.")
